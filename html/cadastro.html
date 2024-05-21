@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="cadastro.css">
+
+  <title> Step By Step cadastro</title>
+
+  <script src="./js/sessao.js"></script>
+  
+
+<body>
+
+    <div id="tela">
+<div class="boxCadastro" id="BOXCadastro">
+    <h1 style="color: bisque;">Cadastro</h1>
+      
+    <div class="caixa-Input">
+        <div class="texto-Login">
+            Nome:
+        </div>
+    
+
+        <input class="input" id="inputNome" type="text" placeholder="  Digite seu Nome: ">
+        <div class="texto-Login">
+            Email:
+        </div>
+
+        <input class="input" id="inputEmail" type="text" placeholder="  Digite sua email: ">
+        <div class="texto-Login">
+            Senha:
+        </div>
+
+        <input class="input" id="inputSenha" type="password" placeholder="  Digite sua senha:  ">
+        <div class="texto-Login">
+            Confirme sua senha:
+        </div>
+        <input class="input" id="inputConfirmacaoSenha" type="password" placeholder=" Confirme sua senha: ">
+    </div>
+    <button class="botao" onclick="validar()"> CADASTRAR </button>
+</div>
+
+
+
+
+</body>
+
+</html>
+<script>
+
+/--------- VAR GLOBAL ------------/
+var emailGLOBAL = 0;
+var senhaGLOBAL = 0;
+
+/------- FUNÇÃO CADASTRO ---------/
+function validar() {
+var email = inputEmail.value;
+var senha = inputSenha.value;
+var nome = inputNome.value;
+var confirma = inputConfirmacaoSenha.value;
+var posicaoArroba = email.indexOf("@");
+emailGLOBAL = email;
+senhaGLOBAL = senha;
+
+if(nome != "" && senha != "" && email != "" && confirma != ""){
+
+
+if (nome.length <=2) {
+    alert('Nome precisa ter mais que 2 caracteres');
+}
+
+else if (posicaoArroba < 0) {
+    alert('O email precisa conter @');
+}
+else if (senha.length <= 6 || senha.length == 0) {
+    alert('A senha precisa conter no minímo 7')
+}
+
+else if (confirma != senha) {
+    alert('A confirmação não esta igual a senha.')
+}
+else {
+    BOXCadastro.style.display = "none";
+    BOXLogin.style.display = "flex";
+
+}
+}
+else{
+alert('Preencha todos os campos');
+}
+
+}
